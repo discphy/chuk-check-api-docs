@@ -1,0 +1,1484 @@
+openapi: 3.0.3
+info:
+  description: chuk_check_core API
+  title: chuk_check_core API
+  version: 1.0.0
+servers:
+- url: http://dev-api.fcprovin.com
+paths:
+  /api/v1/sns:
+    get:
+      operationId: sns-readAll
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SnsResponse'
+                type: array
+          description: OK
+      summary: GET api/v1/sns
+      x-accepts: '*/*'
+    post:
+      operationId: sns-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SnsCreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SnsResponse'
+          description: OK
+      summary: POST api/v1/sns
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /api/v1/sns/{id}:
+    get:
+      operationId: sns-read
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SnsResponse'
+          description: OK
+      summary: "GET api/v1/sns/{id}"
+      x-accepts: '*/*'
+  /api/v1/vote:
+    get:
+      operationId: vote-readAll
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/VoteResponse'
+                type: array
+          description: OK
+      summary: GET api/v1/vote
+      x-accepts: '*/*'
+    post:
+      operationId: vote-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoteCreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VoteResponse'
+          description: OK
+      summary: POST api/v1/vote
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /api/v1/vote/{id}:
+    get:
+      operationId: vote-read
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VoteResponse'
+          description: OK
+      summary: "GET api/v1/vote/{id}"
+      x-accepts: '*/*'
+    put:
+      operationId: vote-update
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoteUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VoteResponse'
+          description: OK
+      summary: "PUT api/v1/vote/{id}"
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /api/v1/auth/access-token:
+    post:
+      operationId: accessToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenCreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+          description: OK
+      summary: POST api/v1/auth/access-token
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /api/v1/auth/refresh-token:
+    post:
+      operationId: refreshToken
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+          description: OK
+      summary: POST api/v1/auth/refresh-token
+      x-accepts: '*/*'
+  /api/v1/stadium:
+    get:
+      operationId: stadium-readAll
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/StadiumResponse'
+                type: array
+          description: OK
+      summary: GET api/v1/stadium
+      x-accepts: '*/*'
+    post:
+      operationId: stadium-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StadiumCreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/StadiumResponse'
+          description: OK
+      summary: POST api/v1/stadium
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /api/v1/stadium/{id}:
+    get:
+      operationId: stadium-read
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/StadiumResponse'
+          description: OK
+      summary: "GET api/v1/stadium/{id}"
+      x-accepts: '*/*'
+  /api/v1/team:
+    get:
+      operationId: team-readAll
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/TeamResponse'
+                type: array
+          description: OK
+      summary: GET api/v1/team
+      x-accepts: '*/*'
+    post:
+      operationId: team-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamCreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TeamResponse'
+          description: OK
+      summary: POST api/v1/team
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /api/v1/team/{id}:
+    get:
+      operationId: team-read
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TeamResponse'
+          description: OK
+      summary: "GET api/v1/team/{id}"
+      x-accepts: '*/*'
+    put:
+      operationId: team-update
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TeamResponse'
+          description: OK
+      summary: "PUT api/v1/team/{id}"
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /api/v1/attend:
+    get:
+      operationId: attend-readAll
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/AttendResponse'
+                type: array
+          description: OK
+      summary: GET api/v1/attend
+      x-accepts: '*/*'
+    post:
+      operationId: attend-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AttendCreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AttendResponse'
+          description: OK
+      summary: POST api/v1/attend
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /api/v1/attend/{id}:
+    get:
+      operationId: attend-read
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AttendResponse'
+          description: OK
+      summary: "GET api/v1/attend/{id}"
+      x-accepts: '*/*'
+    put:
+      operationId: attend-update
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AttendUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AttendResponse'
+          description: OK
+      summary: "PUT api/v1/attend/{id}"
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /api/v1/player:
+    get:
+      operationId: player-readAll
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/PlayerResponse'
+                type: array
+          description: OK
+      summary: GET api/v1/player
+      x-accepts: '*/*'
+    post:
+      operationId: player-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlayerCreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PlayerResponse'
+          description: OK
+      summary: POST api/v1/player
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /api/v1/player/{id}:
+    get:
+      operationId: player-read
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PlayerResponse'
+          description: OK
+      summary: "GET api/v1/player/{id}"
+      x-accepts: '*/*'
+    put:
+      operationId: player-update
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlayerUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PlayerResponse'
+          description: OK
+      summary: "PUT api/v1/player/{id}"
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /api/v1/match:
+    get:
+      operationId: match-readAll
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/MatchResponse'
+                type: array
+          description: OK
+      summary: GET api/v1/match
+      x-accepts: '*/*'
+    post:
+      operationId: match-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatchCreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MatchResponse'
+          description: OK
+      summary: POST api/v1/match
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /api/v1/match/{id}:
+    get:
+      operationId: match-read
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MatchResponse'
+          description: OK
+      summary: "GET api/v1/match/{id}"
+      x-accepts: '*/*'
+    put:
+      operationId: match-update
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatchUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MatchResponse'
+          description: OK
+      summary: "PUT api/v1/match/{id}"
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /api/v1/region:
+    get:
+      operationId: region-readAll
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/RegionResponse'
+                type: array
+          description: OK
+      summary: GET api/v1/region
+      x-accepts: '*/*'
+    post:
+      operationId: region-reate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegionCreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RegionResponse'
+          description: OK
+      summary: POST api/v1/region
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /api/v1/member:
+    get:
+      operationId: member-readAll
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/MemberResponse'
+                type: array
+          description: OK
+      summary: GET api/v1/member
+      x-accepts: '*/*'
+    post:
+      operationId: member-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberCreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MemberResponse'
+          description: OK
+      summary: POST api/v1/member
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /api/v1/member/{id}:
+    get:
+      operationId: member-read
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MemberResponse'
+          description: OK
+      summary: "GET api/v1/member/{id}"
+      x-accepts: '*/*'
+  /api/v1/member/{id}/teams:
+    get:
+      operationId: teams
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/TeamResponse'
+                type: array
+          description: OK
+      summary: "GET api/v1/member/{id}/teams"
+      x-accepts: '*/*'
+components:
+  schemas:
+    SnsResponse:
+      example:
+        createdDate: 2000-01-23T04:56:07.000+00:00
+        snsId: 0
+        updatedDate: 2000-01-23T04:56:07.000+00:00
+        type: GOOGLE
+        uuid: uuid
+      properties:
+        snsId:
+          format: int64
+          type: integer
+        uuid:
+          type: string
+        type:
+          enum:
+          - GOOGLE
+          - APPLE
+          - NAVER
+          - KAKAO
+          type: string
+        createdDate:
+          format: date-time
+          type: string
+        updatedDate:
+          format: date-time
+          type: string
+      type: object
+    SnsCreateRequest:
+      example:
+        type: GOOGLE
+        uuid: uuid
+      properties:
+        uuid:
+          type: string
+        type:
+          enum:
+          - GOOGLE
+          - APPLE
+          - NAVER
+          - KAKAO
+          type: string
+      type: object
+    MemberResponse:
+      example:
+        createdDate: 2000-01-23T04:56:07.000+00:00
+        name: name
+        sns:
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          snsId: 0
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          type: GOOGLE
+          uuid: uuid
+        updatedDate: 2000-01-23T04:56:07.000+00:00
+        birthDate: 2000-01-23
+        email: email
+        memberId: 5
+      properties:
+        memberId:
+          format: int64
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        birthDate:
+          format: date
+          type: string
+        createdDate:
+          format: date-time
+          type: string
+        updatedDate:
+          format: date-time
+          type: string
+        sns:
+          $ref: '#/components/schemas/SnsResponse'
+      type: object
+    RegionResponse:
+      example:
+        country: country
+        createdDate: 2000-01-23T04:56:07.000+00:00
+        regionId: 2
+        city: city
+        updatedDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        regionId:
+          format: int64
+          type: integer
+        country:
+          type: string
+        city:
+          type: string
+        createdDate:
+          format: date-time
+          type: string
+        updatedDate:
+          format: date-time
+          type: string
+      type: object
+    TeamResponse:
+      example:
+        createdDate: 2000-01-23T04:56:07.000+00:00
+        teamId: 5
+        name: name
+        updatedDate: 2000-01-23T04:56:07.000+00:00
+        region:
+          country: country
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          regionId: 2
+          city: city
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+        status: WAIT
+      properties:
+        teamId:
+          format: int64
+          type: integer
+        name:
+          type: string
+        status:
+          enum:
+          - WAIT
+          - APPROVE
+          - EXIT
+          type: string
+        createdDate:
+          format: date-time
+          type: string
+        updatedDate:
+          format: date-time
+          type: string
+        region:
+          $ref: '#/components/schemas/RegionResponse'
+      type: object
+    PlayerResponse:
+      example:
+        uniformNumber: 1
+        createdDate: 2000-01-23T04:56:07.000+00:00
+        authority: GENERAL
+        member:
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          name: name
+          sns:
+            createdDate: 2000-01-23T04:56:07.000+00:00
+            snsId: 0
+            updatedDate: 2000-01-23T04:56:07.000+00:00
+            type: GOOGLE
+            uuid: uuid
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          birthDate: 2000-01-23
+          email: email
+          memberId: 5
+        position: FW
+        updatedDate: 2000-01-23T04:56:07.000+00:00
+        team:
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          teamId: 5
+          name: name
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          region:
+            country: country
+            createdDate: 2000-01-23T04:56:07.000+00:00
+            regionId: 2
+            city: city
+            updatedDate: 2000-01-23T04:56:07.000+00:00
+          status: WAIT
+        playerId: 6
+        status: WAIT
+      properties:
+        playerId:
+          format: int64
+          type: integer
+        uniformNumber:
+          format: int32
+          type: integer
+        position:
+          enum:
+          - FW
+          - MF
+          - DF
+          - GK
+          type: string
+        status:
+          enum:
+          - WAIT
+          - APPROVE
+          - EXIT
+          type: string
+        authority:
+          enum:
+          - GENERAL
+          - MANAGER
+          - LEADER
+          type: string
+        createdDate:
+          format: date-time
+          type: string
+        updatedDate:
+          format: date-time
+          type: string
+        member:
+          $ref: '#/components/schemas/MemberResponse'
+        team:
+          $ref: '#/components/schemas/TeamResponse'
+      type: object
+    MatchDate:
+      example:
+        endDate: 2000-01-23T04:56:07.000+00:00
+        startDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+      type: object
+    VoteDate:
+      example:
+        endDate: 2000-01-23T04:56:07.000+00:00
+        startDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+      type: object
+    AttendDate:
+      example:
+        deadlineDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        deadlineDate:
+          format: date-time
+          type: string
+      type: object
+    StadiumResponse:
+      example:
+        address: address
+        createdDate: 2000-01-23T04:56:07.000+00:00
+        latitude: 3.616076749251911
+        name: name
+        updatedDate: 2000-01-23T04:56:07.000+00:00
+        stadiumId: 9
+        longitude: 2.027123023002322
+      properties:
+        stadiumId:
+          format: int64
+          type: integer
+        name:
+          type: string
+        address:
+          type: string
+        latitude:
+          format: double
+          type: number
+        longitude:
+          format: double
+          type: number
+        createdDate:
+          format: date-time
+          type: string
+        updatedDate:
+          format: date-time
+          type: string
+      type: object
+    MatchResponse:
+      example:
+        matchDate:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          startDate: 2000-01-23T04:56:07.000+00:00
+        attendDate:
+          deadlineDate: 2000-01-23T04:56:07.000+00:00
+        createdDate: 2000-01-23T04:56:07.000+00:00
+        otherTeamName: otherTeamName
+        voteDate:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          startDate: 2000-01-23T04:56:07.000+00:00
+        stadium:
+          address: address
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          latitude: 3.616076749251911
+          name: name
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          stadiumId: 9
+          longitude: 2.027123023002322
+        updatedDate: 2000-01-23T04:56:07.000+00:00
+        team:
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          teamId: 5
+          name: name
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          region:
+            country: country
+            createdDate: 2000-01-23T04:56:07.000+00:00
+            regionId: 2
+            city: city
+            updatedDate: 2000-01-23T04:56:07.000+00:00
+          status: WAIT
+        matchId: 7
+        home: true
+        notice: notice
+        status: CREATE
+      properties:
+        matchId:
+          format: int64
+          type: integer
+        otherTeamName:
+          type: string
+        home:
+          type: boolean
+        notice:
+          type: string
+        status:
+          enum:
+          - CREATE
+          - VOTE
+          - ATTEND
+          - MATCH
+          - FINISH
+          type: string
+        matchDate:
+          $ref: '#/components/schemas/MatchDate'
+        voteDate:
+          $ref: '#/components/schemas/VoteDate'
+        attendDate:
+          $ref: '#/components/schemas/AttendDate'
+        createdDate:
+          format: date-time
+          type: string
+        updatedDate:
+          format: date-time
+          type: string
+        team:
+          $ref: '#/components/schemas/TeamResponse'
+        stadium:
+          $ref: '#/components/schemas/StadiumResponse'
+      type: object
+    VoteResponse:
+      example:
+        createdDate: 2000-01-23T04:56:07.000+00:00
+        match:
+          matchDate:
+            endDate: 2000-01-23T04:56:07.000+00:00
+            startDate: 2000-01-23T04:56:07.000+00:00
+          attendDate:
+            deadlineDate: 2000-01-23T04:56:07.000+00:00
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          otherTeamName: otherTeamName
+          voteDate:
+            endDate: 2000-01-23T04:56:07.000+00:00
+            startDate: 2000-01-23T04:56:07.000+00:00
+          stadium:
+            address: address
+            createdDate: 2000-01-23T04:56:07.000+00:00
+            latitude: 3.616076749251911
+            name: name
+            updatedDate: 2000-01-23T04:56:07.000+00:00
+            stadiumId: 9
+            longitude: 2.027123023002322
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          team:
+            createdDate: 2000-01-23T04:56:07.000+00:00
+            teamId: 5
+            name: name
+            updatedDate: 2000-01-23T04:56:07.000+00:00
+            region:
+              country: country
+              createdDate: 2000-01-23T04:56:07.000+00:00
+              regionId: 2
+              city: city
+              updatedDate: 2000-01-23T04:56:07.000+00:00
+            status: WAIT
+          matchId: 7
+          home: true
+          notice: notice
+          status: CREATE
+        voteId: 0
+        updatedDate: 2000-01-23T04:56:07.000+00:00
+        status: WAIT
+        player:
+          uniformNumber: 1
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          authority: GENERAL
+          member:
+            createdDate: 2000-01-23T04:56:07.000+00:00
+            name: name
+            sns:
+              createdDate: 2000-01-23T04:56:07.000+00:00
+              snsId: 0
+              updatedDate: 2000-01-23T04:56:07.000+00:00
+              type: GOOGLE
+              uuid: uuid
+            updatedDate: 2000-01-23T04:56:07.000+00:00
+            birthDate: 2000-01-23
+            email: email
+            memberId: 5
+          position: FW
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          team:
+            createdDate: 2000-01-23T04:56:07.000+00:00
+            teamId: 5
+            name: name
+            updatedDate: 2000-01-23T04:56:07.000+00:00
+            region:
+              country: country
+              createdDate: 2000-01-23T04:56:07.000+00:00
+              regionId: 2
+              city: city
+              updatedDate: 2000-01-23T04:56:07.000+00:00
+            status: WAIT
+          playerId: 6
+          status: WAIT
+      properties:
+        voteId:
+          format: int64
+          type: integer
+        status:
+          enum:
+          - WAIT
+          - "TRUE"
+          - "FALSE"
+          type: string
+        createdDate:
+          format: date-time
+          type: string
+        updatedDate:
+          format: date-time
+          type: string
+        player:
+          $ref: '#/components/schemas/PlayerResponse'
+        match:
+          $ref: '#/components/schemas/MatchResponse'
+      type: object
+    VoteCreateRequest:
+      example:
+        matchId: 6
+        playerId: 0
+        status: WAIT
+      properties:
+        playerId:
+          format: int64
+          type: integer
+        matchId:
+          format: int64
+          type: integer
+        status:
+          enum:
+          - WAIT
+          - "TRUE"
+          - "FALSE"
+          type: string
+      type: object
+    VoteUpdateRequest:
+      example:
+        status: WAIT
+      properties:
+        status:
+          enum:
+          - WAIT
+          - "TRUE"
+          - "FALSE"
+          type: string
+      type: object
+    TokenCreateRequest:
+      example:
+        subject: 0
+        scope: ROLE_USER
+      properties:
+        subject:
+          format: int64
+          type: integer
+        scope:
+          enum:
+          - ROLE_USER
+          - ROLE_ADMIN
+          type: string
+      type: object
+    TokenResponse:
+      example:
+        accessTokenExpireDate: 2000-01-23T04:56:07.000+00:00
+        refreshTokenExpireDate: 2000-01-23T04:56:07.000+00:00
+        accessToken: accessToken
+        refreshToken: refreshToken
+      properties:
+        accessToken:
+          type: string
+        refreshToken:
+          type: string
+        accessTokenExpireDate:
+          format: date-time
+          type: string
+        refreshTokenExpireDate:
+          format: date-time
+          type: string
+      type: object
+    StadiumCreateRequest:
+      example:
+        address: address
+        latitude: 0.8008281904610115
+        name: name
+        longitude: 6.027456183070403
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        latitude:
+          format: double
+          type: number
+        longitude:
+          format: double
+          type: number
+      type: object
+    TeamCreateRequest:
+      example:
+        regionId: 0
+        name: name
+      properties:
+        regionId:
+          format: int64
+          type: integer
+        name:
+          type: string
+      type: object
+    TeamUpdateRequest:
+      example:
+        status: WAIT
+      properties:
+        status:
+          enum:
+          - WAIT
+          - APPROVE
+          - EXIT
+          type: string
+      type: object
+    AttendResponse:
+      example:
+        createdDate: 2000-01-23T04:56:07.000+00:00
+        match:
+          matchDate:
+            endDate: 2000-01-23T04:56:07.000+00:00
+            startDate: 2000-01-23T04:56:07.000+00:00
+          attendDate:
+            deadlineDate: 2000-01-23T04:56:07.000+00:00
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          otherTeamName: otherTeamName
+          voteDate:
+            endDate: 2000-01-23T04:56:07.000+00:00
+            startDate: 2000-01-23T04:56:07.000+00:00
+          stadium:
+            address: address
+            createdDate: 2000-01-23T04:56:07.000+00:00
+            latitude: 3.616076749251911
+            name: name
+            updatedDate: 2000-01-23T04:56:07.000+00:00
+            stadiumId: 9
+            longitude: 2.027123023002322
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          team:
+            createdDate: 2000-01-23T04:56:07.000+00:00
+            teamId: 5
+            name: name
+            updatedDate: 2000-01-23T04:56:07.000+00:00
+            region:
+              country: country
+              createdDate: 2000-01-23T04:56:07.000+00:00
+              regionId: 2
+              city: city
+              updatedDate: 2000-01-23T04:56:07.000+00:00
+            status: WAIT
+          matchId: 7
+          home: true
+          notice: notice
+          status: CREATE
+        updatedDate: 2000-01-23T04:56:07.000+00:00
+        attendId: 0
+        status: ATTEND
+        player:
+          uniformNumber: 1
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          authority: GENERAL
+          member:
+            createdDate: 2000-01-23T04:56:07.000+00:00
+            name: name
+            sns:
+              createdDate: 2000-01-23T04:56:07.000+00:00
+              snsId: 0
+              updatedDate: 2000-01-23T04:56:07.000+00:00
+              type: GOOGLE
+              uuid: uuid
+            updatedDate: 2000-01-23T04:56:07.000+00:00
+            birthDate: 2000-01-23
+            email: email
+            memberId: 5
+          position: FW
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          team:
+            createdDate: 2000-01-23T04:56:07.000+00:00
+            teamId: 5
+            name: name
+            updatedDate: 2000-01-23T04:56:07.000+00:00
+            region:
+              country: country
+              createdDate: 2000-01-23T04:56:07.000+00:00
+              regionId: 2
+              city: city
+              updatedDate: 2000-01-23T04:56:07.000+00:00
+            status: WAIT
+          playerId: 6
+          status: WAIT
+      properties:
+        attendId:
+          format: int64
+          type: integer
+        status:
+          enum:
+          - ATTEND
+          - LATE
+          - ABSENT
+          - REASON
+          type: string
+        createdDate:
+          format: date-time
+          type: string
+        updatedDate:
+          format: date-time
+          type: string
+        player:
+          $ref: '#/components/schemas/PlayerResponse'
+        match:
+          $ref: '#/components/schemas/MatchResponse'
+      type: object
+    AttendCreateRequest:
+      example:
+        matchId: 6
+        playerId: 0
+        status: ATTEND
+      properties:
+        playerId:
+          format: int64
+          type: integer
+        matchId:
+          format: int64
+          type: integer
+        status:
+          enum:
+          - ATTEND
+          - LATE
+          - ABSENT
+          - REASON
+          type: string
+      type: object
+    AttendUpdateRequest:
+      example:
+        status: ATTEND
+      properties:
+        status:
+          enum:
+          - ATTEND
+          - LATE
+          - ABSENT
+          - REASON
+          type: string
+      type: object
+    PlayerCreateRequest:
+      example:
+        teamId: 6
+        authority: GENERAL
+        memberId: 0
+      properties:
+        memberId:
+          format: int64
+          type: integer
+        teamId:
+          format: int64
+          type: integer
+        authority:
+          enum:
+          - GENERAL
+          - MANAGER
+          - LEADER
+          type: string
+      type: object
+    PlayerUpdateRequest:
+      example:
+        uniformNumber: 0
+        authority: GENERAL
+        position: FW
+        status: WAIT
+      properties:
+        uniformNumber:
+          format: int32
+          type: integer
+        position:
+          enum:
+          - FW
+          - MF
+          - DF
+          - GK
+          type: string
+        status:
+          enum:
+          - WAIT
+          - APPROVE
+          - EXIT
+          type: string
+        authority:
+          enum:
+          - GENERAL
+          - MANAGER
+          - LEADER
+          type: string
+      type: object
+    MatchCreateRequest:
+      example:
+        voteStartDate: 2000-01-23T04:56:07.000+00:00
+        otherTeamName: otherTeamName
+        endDate: 2000-01-23T04:56:07.000+00:00
+        teamId: 0
+        stadiumId: 6
+        startDate: 2000-01-23T04:56:07.000+00:00
+        home: true
+        notice: notice
+        voteEndDate: 2000-01-23T04:56:07.000+00:00
+        attendDeadlineDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        teamId:
+          format: int64
+          type: integer
+        stadiumId:
+          format: int64
+          type: integer
+        otherTeamName:
+          type: string
+        home:
+          type: boolean
+        notice:
+          type: string
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        voteStartDate:
+          format: date-time
+          type: string
+        voteEndDate:
+          format: date-time
+          type: string
+        attendDeadlineDate:
+          format: date-time
+          type: string
+      type: object
+    MatchUpdateRequest:
+      example:
+        voteStartDate: 2000-01-23T04:56:07.000+00:00
+        otherTeamName: otherTeamName
+        endDate: 2000-01-23T04:56:07.000+00:00
+        stadiumId: 0
+        startDate: 2000-01-23T04:56:07.000+00:00
+        home: true
+        notice: notice
+        status: CREATE
+        voteEndDate: 2000-01-23T04:56:07.000+00:00
+        attendDeadlineDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        stadiumId:
+          format: int64
+          type: integer
+        otherTeamName:
+          type: string
+        home:
+          type: boolean
+        notice:
+          type: string
+        status:
+          enum:
+          - CREATE
+          - VOTE
+          - ATTEND
+          - MATCH
+          - FINISH
+          type: string
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        voteStartDate:
+          format: date-time
+          type: string
+        voteEndDate:
+          format: date-time
+          type: string
+        attendDeadlineDate:
+          format: date-time
+          type: string
+      type: object
+    RegionCreateRequest:
+      example:
+        country: country
+        city: city
+      properties:
+        country:
+          type: string
+        city:
+          type: string
+      type: object
+    MemberCreateRequest:
+      example:
+        name: name
+        snsId: 0
+        birthDate: 2000-01-23
+        email: email
+      properties:
+        snsId:
+          format: int64
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        birthDate:
+          format: date
+          type: string
+      type: object
+
